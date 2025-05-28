@@ -1,0 +1,19 @@
+<form method="post" action="/hasil">
+  <h3>Masukkan Nama Dosen</h3>
+  <input type="text" name="nama[]" required>
+  <input type="text" name="nama[]" required>
+  <input type="text" name="nama[]" required>
+
+  <h3>Masukkan Nilai Pairwise Comparison</h3>
+  <p>Nilai preferensi (1–9) untuk:</p>
+  <label>{{ nama[0] }} vs {{ nama[1] }}</label>
+  <input type="number" name="m_01" min="1" max="9" required><br>
+
+  <label>{{ nama[0] }} vs {{ nama[2] }}</label>
+  <input type="number" name="m_02" min="1" max="9" required><br>
+
+  <label>{{ nama[1] }} vs {{ nama[2] }}</label>
+  <input type="number" name="m_12" min="1" max="9" required><br>
+
+  <button type="submit">Hitung AHP</button>
+</form>
