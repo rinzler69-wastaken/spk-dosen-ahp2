@@ -1,19 +1,76 @@
-<form method="post" action="/hasil">
-  <h3>Masukkan Nama Dosen</h3>
-  <input type="text" name="nama[]" required>
-  <input type="text" name="nama[]" required>
-  <input type="text" name="nama[]" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHP Dosen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Analisis AHP Dosen</h2>
+        <form method="post" action="/hasil">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Masukkan Nama Dosen</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="nama1" class="form-label">Nama Dosen 1:</label>
+                        <input type="text" class="form-control" id="nama1" name="nama[]" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama2" class="form-label">Nama Dosen 2:</label>
+                        <input type="text" class="form-control" id="nama2" name="nama[]" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama3" class="form-label">Nama Dosen 3:</label>
+                        <input type="text" class="form-control" id="nama3" name="nama[]" required>
+                    </div>
+                </div>
+            </div>
 
-  <h3>Masukkan Nilai Pairwise Comparison</h3>
-  <p>Nilai preferensi (1–9) untuk:</p>
-  <label>{{ nama[0] }} vs {{ nama[1] }}</label>
-  <input type="number" name="m_01" min="1" max="9" required><br>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Masukkan Nilai Pairwise Comparison</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nilai preferensi (1–9) untuk:</p>
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-6">
+                            <label for="m_01" class="form-label">{{ nama[0] | default('Dosen 1') }} vs {{ nama[1] | default('Dosen 2') }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="m_01" name="m_01" min="1" max="9" required>
+                        </div>
+                    </div>
 
-  <label>{{ nama[0] }} vs {{ nama[2] }}</label>
-  <input type="number" name="m_02" min="1" max="9" required><br>
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-6">
+                            <label for="m_02" class="form-label">{{ nama[0] | default('Dosen 1') }} vs {{ nama[2] | default('Dosen 3') }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="m_02" name="m_02" min="1" max="9" required>
+                        </div>
+                    </div>
 
-  <label>{{ nama[1] }} vs {{ nama[2] }}</label>
-  <input type="number" name="m_12" min="1" max="9" required><br>
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-6">
+                            <label for="m_12" class="form-label">{{ nama[1] | default('Dosen 2') }} vs {{ nama[2] | default('Dosen 3') }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="m_12" name="m_12" min="1" max="9" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <button type="submit">Hitung AHP</button>
-</form>
+            <div class="mt-4 d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Hitung AHP</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
